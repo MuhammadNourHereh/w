@@ -17,9 +17,9 @@ class CreateOrdersTable extends Migration
 
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('customer_id')->on('customers');
-            $table->integer('driver_id')->nullable();
+            $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')->references('driver_id')->on('drivers');
             $table->enum('state',['pending', 'processing', 'assigning', 'shipping', 'delivered'])->default('pending');
             $table->timestamp('time_ordered')->nullable();

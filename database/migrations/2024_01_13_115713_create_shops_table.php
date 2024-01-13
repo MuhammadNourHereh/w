@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
 
         Schema::create('shops', function (Blueprint $table) {
             $table->id('shop_id');
-            $table->integer('shop_owner_id');
+            $table->unsignedBigInteger('shop_owner_id');
             $table->foreign('shop_owner_id')->references('shop_owner_id')->on('show_owners');
             $table->string('shop_name', 30);
             $table->string('location', 255)->nullable();

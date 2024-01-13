@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShowOwnersTable extends Migration
+class CreateShopOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateShowOwnersTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('show_owners', function (Blueprint $table) {
+        Schema::create('shop_owners', function (Blueprint $table) {
             $table->id('shop_owner_id');
             $table->string('first_name', 30);
             $table->string('last_name', 30);
