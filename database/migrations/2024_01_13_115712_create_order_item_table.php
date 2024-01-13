@@ -16,11 +16,11 @@ class CreateOrderItemTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('order_item', function (Blueprint $table) {
-            $table->increments('order_id');
+            $table->integer('order_id')->primary();
             $table->foreign('order_id')->references('order_id')->on('orders');
             $table->integer('item_id')->primary();
             $table->foreign('item_id')->references('item_id')->on('items');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
         });
 
         Schema::enableForeignKeyConstraints();

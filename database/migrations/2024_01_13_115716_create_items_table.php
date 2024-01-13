@@ -16,14 +16,15 @@ class CreateItemsTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('items', function (Blueprint $table) {
-            $table->id();
+            $table->id('item_id');
             $table->integer('shop_id');
             $table->foreign('shop_id')->references('shop_id')->on('shops');
             $table->string('name');
             $table->text('description');
-            $table->smallInteger('available_quantity');
+            $table->integer('available_quantity');
             $table->string('image_filename')->nullable();
             $table->string('thumbnail_filename')->nullable();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

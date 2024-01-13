@@ -16,13 +16,15 @@ class CreateShowOwnersTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('show_owners', function (Blueprint $table) {
-            $table->increments('shop_owner_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->enum('gender');
-            $table->dateTime('date_of_birth')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('email');
+            $table->id('shop_owner_id');
+            $table->string('first_name', 30);
+            $table->string('last_name', 30);
+            $table->string('email', 30);
+            $table->enum('gender', ['MALE', 'FEMALE', 'UNSPECIFIED']);
+            $table->date('date_of_birth')->nullable();
+            $table->integer('phone_number')->nullable();
+            $table->string('location', 255)->nullable();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

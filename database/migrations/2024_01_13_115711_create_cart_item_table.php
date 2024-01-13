@@ -16,11 +16,11 @@ class CreateCartItemTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('cart_item', function (Blueprint $table) {
-            $table->increments('customer_id');
+            $table->integer('customer_id')->primary();
             $table->foreign('customer_id')->references('customer_id')->on('customers');
             $table->integer('item_id')->primary();
             $table->foreign('item_id')->references('item_id')->on('items');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
         });
 
         Schema::enableForeignKeyConstraints();

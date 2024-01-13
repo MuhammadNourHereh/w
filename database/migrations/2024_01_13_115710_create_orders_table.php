@@ -16,12 +16,12 @@ class CreateOrdersTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('order_id');
+            $table->id('order_id');
             $table->integer('user_id');
             $table->foreign('user_id')->references('customer_id')->on('customers');
             $table->integer('driver_id')->nullable();
             $table->foreign('driver_id')->references('driver_id')->on('drivers');
-            $table->enum('state');
+            $table->enum('state',['pending', 'processing', 'assigning', 'shipping', 'delivered'])->default('pending');
             $table->timestamp('time_ordered')->nullable();
             $table->timestamp('time_processed')->nullable();
             $table->timestamp('time_assigned')->nullable();

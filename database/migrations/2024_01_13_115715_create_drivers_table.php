@@ -17,12 +17,14 @@ class CreateDriversTable extends Migration
 
         Schema::create('drivers', function (Blueprint $table) {
             $table->id('driver_id');
-            $table->string('name');
-            $table->string('last_name');
-            $table->enum('gender');
-            $table->string('phone_number')->nullable();
-            $table->string('email');
-            $table->string('location')->nullable();
+            $table->string('first_name', 30);
+            $table->string('last_name', 30);
+            $table->string('email', 30);
+            $table->enum('gender', ['MALE', 'FEMALE', 'UNSPECIFIED']);
+            $table->date('date_of_birth')->nullable();
+            $table->integer('phone_number')->nullable();
+            $table->string('location', 255)->nullable();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

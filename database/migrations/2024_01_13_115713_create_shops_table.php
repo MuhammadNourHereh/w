@@ -16,13 +16,12 @@ class CreateShopsTable extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('shops', function (Blueprint $table) {
-            $table->increments('shop_id');
+            $table->id('shop_id');
             $table->integer('shop_owner_id');
             $table->foreign('shop_owner_id')->references('shop_owner_id')->on('show_owners');
-            $table->string('name');
-            $table->string('location');
-            $table->string('phone_number')->nullable();
-            $table->string('email');
+            $table->string('shop_name', 30);
+            $table->string('location', 255)->nullable();
+            $table->integer('phone_number')->nullable();
         });
 
         Schema::enableForeignKeyConstraints();
